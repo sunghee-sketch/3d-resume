@@ -1,0 +1,121 @@
+/* Shared styles for static sub-pages (about, projects, contact).
+   Imported via @import in each sub-page <style> block. */
+
+.page {
+	min-height: 100vh;
+	background: #0d0d1a;
+	color: #e8eeff;
+	font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 48px 24px 80px;
+	line-height: 1.7;
+}
+
+.back-link {
+	display: inline-block;
+	margin-bottom: 48px;
+	color: #7799ff;
+	text-decoration: none;
+	font-size: 14px;
+	transition: color 0.15s;
+}
+
+.back-link:hover { color: #aabbff; }
+
+header {
+	margin-bottom: 56px;
+}
+
+h1 {
+	font-size: clamp(28px, 6vw, 48px);
+	margin: 0 0 8px;
+	color: #c8d8ff;
+}
+
+.role {
+	font-size: 18px;
+	color: #7799ff;
+	margin: 0 0 16px;
+}
+
+.badge {
+	display: inline-block;
+	padding: 4px 14px;
+	border-radius: 20px;
+	background: rgba(80 200 120 / 0.15);
+	color: #80e8a0;
+	border: 1px solid rgba(80 200 120 / 0.3);
+	font-size: 13px;
+}
+
+section {
+	margin-bottom: 48px;
+}
+
+h2 {
+	font-size: 20px;
+	color: #c8d8ff;
+	margin: 0 0 16px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(255 255 255 / 0.07);
+}
+
+h3 {
+	font-size: 16px;
+	color: #99bbff;
+	margin: 0 0 12px;
+}
+
+p {
+	color: rgba(255 255 255 / 0.7);
+	margin: 0 0 12px;
+}
+
+ul {
+	padding-left: 0;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+li {
+	color: rgba(255 255 255 / 0.7);
+	font-size: 15px;
+}
+
+li::before {
+	content: '▸ ';
+	color: #7799ff;
+}
+
+.links {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.link-btn {
+	padding: 9px 22px;
+	border-radius: 24px;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 500;
+	transition: opacity 0.15s;
+}
+
+.link-btn:hover { opacity: 0.8; }
+
+.link-btn.primary {
+	background: rgba(100 130 255 / 0.25);
+	border: 1px solid rgba(100 130 255 / 0.4);
+	color: #c8d8ff;
+}
+
+.link-btn.secondary {
+	background: rgba(255 255 255 / 0.06);
+	border: 1px solid rgba(255 255 255 / 0.15);
+	color: rgba(255 255 255 / 0.7);
+}

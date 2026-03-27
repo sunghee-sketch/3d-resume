@@ -44,8 +44,9 @@ The room lighting and wall painting also change based on the time of day — vis
 
 - **[Three.js](https://threejs.org/)** — 3D scene, geometry, materials, lighting, raycasting
 - **[GSAP](https://gsap.com/)** — Smooth camera fly-to animations
-- **Vanilla JS (ES Modules)** — No build step, no framework
-- **HTML + CSS** — Glass-morphism UI panels, responsive layout
+- **[SvelteKit 2](https://kit.svelte.dev/)** — App framework, routing, SSR/prerendering, SEO
+- **[Svelte 5](https://svelte.dev/)** — UI components with runes-based reactivity
+- **TypeScript** — End-to-end type safety
 
 ---
 
@@ -53,69 +54,91 @@ The room lighting and wall painting also change based on the time of day — vis
 
 ```
 my-3d-resume/
-├── index.html    # Scene setup, 3D geometry, interaction logic
-├── style.css     # UI styling — panels, animations, responsive layout
-└── config.js     # Your portfolio data (name, projects, skills, contact)
+├── src/
+│   ├── lib/
+│   │   ├── data/
+│   │   │   └── resume.ts          # All portfolio content (single source of truth)
+│   │   ├── scene/                 # Pure TS modules wrapping Three.js logic
+│   │   │   ├── setup.ts           # Renderer, camera, controls
+│   │   │   ├── lighting.ts        # Day/night lighting system
+│   │   │   ├── clock.ts           # Simulated time of day
+│   │   │   ├── interactions.ts    # Raycasting & click handling
+│   │   │   ├── camera-anim.ts     # Fly-to camera animations
+│   │   │   └── labels.ts          # Object labels
+│   │   ├── stores/
+│   │   │   ├── scene.svelte.ts    # Scene state (loading, focus, lamp, clock)
+│   │   │   └── ui.svelte.ts       # Panel content, help modal, mobile notice
+│   │   └── components/
+│   │       ├── Scene.svelte       # Three.js canvas wrapper
+│   │       └── UI/                # LoadingScreen, Panel, NavDots, HelpModal, etc.
+│   └── routes/
+│       ├── +layout.svelte         # SEO meta + JSON-LD schema
+│       ├── +page.svelte           # Main 3D experience
+│       ├── about/                 # Prerendered static fallback page
+│       ├── projects/              # Prerendered static fallback page
+│       └── contact/               # Prerendered static fallback page
+├── svelte.config.js
+├── vite.config.ts
+└── package.json
 ```
 
 ---
 
 ## Customization
 
-All personal content lives in **`config.js`**. Edit it to make this your own:
+All personal content lives in **`src/lib/data/resume.ts`**. Edit it to make this your own:
 
-```js
-window.portfolioData = {
+```ts
+export const resumeData = {
   about: {
     name: "Your Name",
     role: "Your Title",
-    bio:  "Your bio...",
+    bio: "Your bio...",
     // ...
   },
   projects: [ /* your projects */ ],
-  skills:   { frontend: [], backend: [], tools: [] },
-  contact:  { email: "", github: "", linkedin: "" },
+  skills: { frontend: [], backend: [], tools: [] },
+  contact: { email: "", github: "", linkedin: "" },
 };
 ```
-
-No rebuild required — just save and refresh.
 
 ---
 
 ## Running Locally
 
-Since the project uses ES modules, you need a local server (browsers block `file://` imports):
-
 ```bash
-# Python
-python3 -m http.server 8080
-
-# Node.js (npx)
-npx serve .
-
-# VS Code
-# Use the Live Server extension
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8080`.
+Then open `http://localhost:5173`.
+
+---
+
+## Building for Production
+
+```bash
+npm run build
+npm run preview   # preview the production build locally
+```
 
 ---
 
 ## Deploying
 
-The project is three static files — deploy anywhere:
-
-- **GitHub Pages** — push to a `gh-pages` branch or enable Pages on `main`
-- **Vercel / Netlify** — drag and drop the folder
-- **Any static host** — upload `index.html`, `style.css`, `config.js`
+- **Vercel** — push to GitHub and connect the repo; zero-config with `@sveltejs/adapter-auto`
+- **Netlify** — same, connect repo and deploy
+- **GitHub Pages** — switch to `@sveltejs/adapter-static` in `svelte.config.js`
 
 ---
 
 ## Performance Notes
 
+- Three.js is lazy-loaded in `onMount` — zero SSR cost, excluded from the server bundle
 - Shadows are disabled on mobile to maintain smooth frame rates
 - Pixel ratio is capped on high-DPI displays
 - All 3D geometry is generated in JavaScript — no external model files needed
+- Static fallback pages (`/about`, `/projects`, `/contact`) are prerendered for SEO and no-WebGL scenarios
 
 ---
 
