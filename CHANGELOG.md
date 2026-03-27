@@ -6,7 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
-## [Unreleased]
+## [Released]
+
+---
+
+## [0.2.1] — 2026-03-27
+
+### Fixed
+- Nav dots now correctly trigger camera fly-to and open panel (wired `$effect` → `focusObjectFn`)
+- Clicking outside any interactive object now resets focus and closes panel on both mouse and touch
+- Hover cursor no longer shows pointer over bed during daytime
+- Camera fly-to for sleeping character now targets the bed correctly instead of looking into a wall
+- Pink emissive highlight now applies to `bedBodyLump` when sleeping, not the invisible `characterGroup`
+- Day/night camera for character interaction is now dynamic: desk view during day, bed view at night
 
 ---
 
