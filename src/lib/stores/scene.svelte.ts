@@ -1,7 +1,7 @@
 // Scene store — reactive state shared between Scene.svelte and UI components.
 // Written as a Svelte 5 rune module (.svelte.ts) so $state works outside components.
 
-export type SceneObjectKey = 'laptop' | 'bookshelf' | 'frame' | 'character' | 'lamp' | null;
+export type SceneObjectKey = 'laptop' | 'bookshelf' | 'frame' | 'character' | 'lamp' | 'professor' | null;
 
 export type LoadStage =
 	| 'idle'

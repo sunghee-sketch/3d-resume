@@ -36,11 +36,23 @@ export interface ResumeContact {
 	available: boolean;
 }
 
+export interface ResumeProfessor {
+	name: string;
+	title: string;
+	university: string;
+	department: string;
+	lab: string;
+	research: string;
+	email?: string;
+	website?: string;
+}
+
 export interface ResumeData {
 	about: ResumeAbout;
 	projects: ResumeProject[];
 	skills: ResumeSkills;
 	contact: ResumeContact;
+	professor: ResumeProfessor;
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -50,13 +62,19 @@ export interface ResumeData {
 
 export const resume: ResumeData = {
 	about: {
-		name: 'Alex Morgan',
-		role: 'Full-Stack & Creative Developer',
-		bio: 'I build fast, accessible, and visually rich web applications. Passionate about bridging design and engineering — from pixel-perfect interfaces to robust backend systems.',
-		facts: ['5+ years experience', '20+ shipped products', 'Open-source contributor', 'Coffee-driven'],
+		name: 'Sunghee Choi',
+		role: 'Lab Automation & Full-Stack Developer',
+		bio: 'Chemistry researcher turned full-stack developer. My path: pharmaceutical engineering → research assistant at SK Biopharm → MS at Sogang, where I now build web-based control systems (Vue.js, FastAPI, Raspberry Pi) for automated LC–MS sample preparation. Wet-lab instincts, shipped as software.',
+		facts: [
+			'MS Chemistry · Sogang Univ. · GPA 4.11',
+			'Research Assistant · SK Biopharm · 2023.07 – 2024.06',
+			'BS Pharmaceutical Eng. · Mokwon Univ. · GPA 3.62 / 4.5',
+			'KSMS 2025 · First author',
+			'Open-source contributor'
+		],
 		links: [
-			{ label: 'GitHub', url: 'https://github.com/alexmorgan', type: 'primary' },
-			{ label: 'Portfolio', url: '/', type: 'secondary' },
+			{ label: 'GitHub', url: 'https://github.com/sunghee-sketch', type: 'primary' },
+			{ label: 'KSMS 2025 Poster', url: '#', type: 'secondary' },
 			{ label: 'Resume PDF', url: '#', type: 'secondary' }
 		]
 	},
@@ -91,11 +109,22 @@ export const resume: ResumeData = {
 	},
 
 	contact: {
-		email: 'alex@example.dev',
-		github: 'github.com/alexmorgan',
+		email: 'csh5145@gmail.com',
+		github: 'https://github.com/sunghee-sketch',
 		linkedin: 'linkedin.com/in/alexmorgan',
-		twitter: '@alexmorgan_dev',
-		location: 'San Francisco, CA',
+		twitter: '@sunghee_dev',
+		location: 'Seoul, South Korea',
 		available: true
+	},
+
+	professor: {
+		name: 'Prof. Han bin Oh',
+		title: 'MS Advisor',
+		university: 'Sogang University',
+		department: 'Department of Chemistry',
+		lab: 'Natural Product Mass Spectrometry Lab',
+		research: 'HPLC / LC–MS analysis of natural products, automated sample preparation workflows.',
+		email: 'advisor@sogang.ac.kr',
+		website: '#'
 	}
 };

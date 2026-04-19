@@ -6,6 +6,14 @@ An interactive 3D portfolio experience built with Three.js — explore a fully r
 
 ---
 
+## 📋 TODO
+
+- [ ] About Me 자세히 작성하기
+- [ ] 레포 연결하기
+- [ ] Skills 작성하기
+
+---
+
 ## Preview
 
 ![3D Resume Preview](preview-day.png)

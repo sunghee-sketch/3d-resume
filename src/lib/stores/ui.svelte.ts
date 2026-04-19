@@ -79,6 +79,26 @@ function buildPanelContent(key: SceneObjectKey): PanelContent {
 			};
 		}
 
+		case 'professor': {
+			const { name, title, university, department, lab, research, email, website } = resume.professor;
+			return {
+				title: 'Professor',
+				html: `
+					<div class="contact-panel">
+						<h2>${name}</h2>
+						<p class="role">${title}</p>
+						<ul>
+							<li><strong>University</strong> ${university}</li>
+							<li><strong>Department</strong> ${department}</li>
+							<li><strong>Lab</strong> ${lab}</li>
+							<li><strong>Research</strong> ${research}</li>
+							${email ? `<li><strong>Email</strong> <a href="mailto:${email}">${email}</a></li>` : ''}
+							${website && website !== '#' ? `<li><strong>Website</strong> <a href="${website}" target="_blank" rel="noopener">${website}</a></li>` : ''}
+						</ul>
+					</div>`
+			};
+		}
+
 		default:
 			return null;
 	}

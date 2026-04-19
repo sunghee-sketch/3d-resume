@@ -71,7 +71,6 @@
 
 		<p class="help-tip">
 			Room lighting changes with the real time of day.
-			The developer goes to bed at 11&nbsp;PM and returns to the desk at&nbsp;7&nbsp;AM.
 		</p>
 
 		<button class="help-close" onclick={closeHelp} aria-label="Close help">✕</button>
